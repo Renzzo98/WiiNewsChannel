@@ -26,23 +26,40 @@ jobs:
       - name: Build
         run: npm run build -- --configuration production --base-href=/wii-news-channel/
         
+      - name: Debug build output
+        run: |
+          echo "Initial directory structure:"
+          ls -R docs/
+        
       - name: Prepare files
         run: |
+          # Create temp directory
           mkdir -p docs/temp
-          cp -r docs/browser/browser/* docs/temp/
-          rm -rf docs/*
-          cp -r docs/temp/* docs/
+          
+          # Show contents before copy
+          echo "Contents of docs/browser/browser:"
+          ls -la docs/browser/browser || echo "browser directory not found"
+          
+          # Copy files with verbose output
+          cp -rv docs/browser/browser/* docs/temp/ || echo "Copy to temp failed"
+          
+          # Show temp contents
+          echo "Contents of temp:"
+          ls -la docs/temp || echo "temp directory empty"
+          
+          # Clean and move files
+          rm -rf docs/browser
+          mv docs/temp/* docs/ || echo "Move failed"
           rm -rf docs/temp
+          
+          # Add required files
           touch docs/.nojekyll
           cp docs/index.html docs/404.html
           echo "Build date: $(date)" > docs/build.txt
           
-      - name: Debug directory content
-        run: |
-          echo "Root contents:"
-          ls -la docs
-          echo "Assets contents:"
-          ls -la docs/assets
+          # Show final structure
+          echo "Final directory structure:"
+          ls -R docs/
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
