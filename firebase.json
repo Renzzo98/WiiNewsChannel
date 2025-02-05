@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "wiinewschannel-666e7",
     "public": "docs/browser/browser",
     "ignore": [
       "firebase.json",
