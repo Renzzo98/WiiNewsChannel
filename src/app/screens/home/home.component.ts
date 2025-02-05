@@ -1,5 +1,5 @@
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private audioService: AudioService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -41,8 +42,13 @@ export class HomeComponent implements OnInit {
       this.audioService.playStartupSound();
     }
   }
-  
+
   refreshPage() {
     window.location.reload();
+  }
+
+  goToCategories() {
+    this.audioService.playSelectSound();
+    this.router.navigate(['/categories']);
   }
 }

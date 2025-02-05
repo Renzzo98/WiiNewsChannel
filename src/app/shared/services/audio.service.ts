@@ -22,7 +22,17 @@ export class AudioService {
       });
     }
   }
-
+  
+  playSelectSound() {
+    if (this.audio && isPlatformBrowser(this.platformId)) {
+      this.audio.src = 'assets/audio/select.mp3';
+      this.audio.load();
+      this.audio.play().catch(error => {
+        console.warn('Audio playback failed:', error);
+      });
+    }
+  }
+  
   stopSound() {
     if (this.audio && isPlatformBrowser(this.platformId)) {
       this.audio.pause();
