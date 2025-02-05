@@ -28,14 +28,21 @@ jobs:
         
       - name: Prepare files
         run: |
-          cp -r docs/browser/browser/* docs/
-          rm -rf docs/browser
+          mkdir -p docs/temp
+          cp -r docs/browser/browser/* docs/temp/
+          rm -rf docs/*
+          cp -r docs/temp/* docs/
+          rm -rf docs/temp
           touch docs/.nojekyll
           cp docs/index.html docs/404.html
           echo "Build date: $(date)" > docs/build.txt
           
       - name: Debug directory content
-        run: ls -la docs
+        run: |
+          echo "Root contents:"
+          ls -la docs
+          echo "Assets contents:"
+          ls -la docs/assets
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
