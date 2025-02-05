@@ -36,10 +36,8 @@
               "src/styles/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": false,
-            "baseHref": "/wii-news-channel/"
+            "baseHref": "/wii-news-channel/",
+            "ssr": false
           },
           "configurations": {
             "production": {
