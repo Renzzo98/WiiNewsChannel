@@ -1,0 +1,57 @@
+@import 'variables';
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $wii-font-family;
+  background-color: $wii-secondary;
+  color: $wii-text;
+  line-height: 1.5;
+}
+
+// Common button styles
+.wii-button {
+  background-color: $wii-button-background;
+  border: 5px solid $wii-button-border;
+  border-radius: $border-radius-xl;
+  padding: map-get($button-size-vertical-padding, base) map-get($button-size-horizontal-padding, base);
+  cursor: pointer;
+  font-size: map-get($button-size, base);
+  @include responsive-button-size;
+  @include responsive-button-horizontal-padding;
+  @include responsive-button-vertical-padding;
+  transition: all $transition-speed $transition-ease;
+
+  &:hover {
+    background-color: darken($wii-button-background, 5%);
+  }
+}
+
+// Common container styles
+.wii-container {
+  background-color: $wii-secondary;
+  padding: $spacing-md;
+}
+
+// Common card styles
+.wii-card {
+  background-color: $wii-white;
+  border: 1px solid $wii-border;
+  border-radius: $border-radius-sm;
+  padding: $spacing-md;
+}
+
+// Utility classes
+.text-center { text-align: center; }
+.text-primary { color: $wii-primary; }
+.bg-primary { background-color: $wii-primary; }
+.mb-1 { margin-bottom: $spacing-xs; }
+.mb-2 { margin-bottom: $spacing-sm; }
+.mb-3 { margin-bottom: $spacing-md; }
+.mb-4 { margin-bottom: $spacing-lg; }
+.mb-5 { margin-bottom: $spacing-xl; } 

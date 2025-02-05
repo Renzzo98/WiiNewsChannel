@@ -1,0 +1,68 @@
+@import '../../../styles/variables';
+
+.wii-container {
+  background-color: $news-channel-background;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-xs;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding-top: $spacing-lg;
+  
+  .title {
+    width: 100%;
+    border-top: 3px solid $news-channel-green-dark;
+    h1 {
+      font-family: $wii-font-family;
+      font-weight: 900;
+      font-size: map-get($title-size, base);
+      @include responsive-font-sizes;
+      color: $news-channel-green;
+      background-color: $news-channel-banner;
+      margin: 0;
+      line-height: 1.1;
+      padding: 0 0.5em;
+    }
+    
+    .subtitle {
+      color: $news-channel-banner;
+      width: 100%;
+      display: block;
+      background-color: $news-channel-green-dark;
+      font-size: map-get($subtitle-size, base);
+      @include responsive-subtitle;
+      letter-spacing: clamp(0.5rem, 2vw, 1rem);
+      margin: 0;
+    }
+  }
+}
+
+.world-map {
+  flex: 1;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-xl;
+  border-top: 3px solid $news-channel-border;
+}
