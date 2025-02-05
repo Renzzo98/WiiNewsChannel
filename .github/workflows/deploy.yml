@@ -18,14 +18,14 @@ jobs:
           
       - name: Install dependencies
         run: |
-          npm install -g @angular/cli
+          npm install -g @angular/cli firebase-tools
           npm install
         
       - name: Build
         run: ng build --configuration production
         
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-          projectId: wiinewschannel-666e7
+      - name: Deploy
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > $HOME/firebase-service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+          firebase deploy --only hosting
