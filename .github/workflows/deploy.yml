@@ -24,18 +24,22 @@ jobs:
       - name: Build
         run: npm run build -- --configuration production --base-href=/wii-news-channel/
         
-      - name: List build output
-        run: ls -la docs/browser
-        
+      - name: List directories
+        run: |
+          echo "Contents of docs:"
+          ls -la docs
+          echo "Contents of dist:"
+          ls -la dist
+          
       - name: Add .nojekyll file
         run: |
-          touch docs/browser/.nojekyll
-          cp docs/browser/index.html docs/browser/404.html
+          touch docs/.nojekyll
+          cp docs/index.html docs/404.html
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs/browser
+          folder: docs
           branch: gh-pages
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }} 
