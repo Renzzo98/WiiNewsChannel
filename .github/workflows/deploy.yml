@@ -19,19 +19,15 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g @angular/cli
-          npm install -g firebase-tools
           npm install
         
       - name: Build
         run: ng build --configuration production
         
-      - name: List build output
-        run: ls -R docs/browser/browser
-          
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: wiinewschannel-666e7
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: wiinewschannel-666e7
