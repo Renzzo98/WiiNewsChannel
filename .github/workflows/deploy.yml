@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Firebase Hosting
 
 on:
   push:
@@ -8,8 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v3
       
@@ -21,18 +19,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g @angular/cli
+          npm install -g firebase-tools
           npm ci
         
       - name: Build
-        run: ng build --configuration production --base-href=/wii-news-channel/
+        run: ng build --configuration production
           
-      - name: Add .nojekyll
-        run: touch docs/browser/browser/.nojekyll
-          
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/browser/browser
-          force_orphan: true
-          enable_jekyll: false
+      - name: Deploy to Firebase
+        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}"
