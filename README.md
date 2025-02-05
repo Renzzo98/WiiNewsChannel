@@ -1,107 +1,86 @@
-# Wii News Channel Recreation
+# Wii News Channel
 
-A faithful recreation of the Nintendo Wii News Channel interface using Angular. This project aims to replicate the unique aesthetic and user experience of the original Wii News Channel.
+A modern recreation of the iconic Wii News Channel interface using Angular 17.
 
 ## Features
 
-### Visual Design
-- Authentic Wii News Channel styling and layout
-- CRT TV-style splash screen with glowing effects
-- Responsive design that scales from mobile to desktop
-- Custom gradient backgrounds matching original Wii aesthetics
-- Interactive world map with zoom and echo animations
+- Authentic Wii News Channel UI/UX
+- Real-time news updates via NewsAPI
+- Category-based news browsing
+- Responsive design that maintains the Wii aesthetic
+- Time and last updated indicators
 
-### UI Components
-- Custom-styled buttons with:
-  - Wii-specific gradients and shadows
-  - Responsive padding and sizing
-  - Interactive hover and click states
-- Responsive typography using modern CSS techniques
-- Smooth transitions and animations
+## Development
 
-### Technical Features
-- Angular 17 with standalone components
-- CSS animations and transitions
-- Responsive design using clamp() and viewport units
-- Audio playback integration
-- Server-side rendering support
+### Prerequisites
+- Node.js 20+
+- Angular CLI 17+
+- A NewsAPI.org API key
 
-## Development Setup
+### Setup
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/wii-news-channel.git
+cd wii-news-channel
+```
 
-1. Install dependencies:
+2. Install dependencies
 ```bash
 npm install
 ```
 
-2. Start the development server:
+3. Add your NewsAPI key
+```typescript
+// src/app/services/news.service.ts
+private apiKey = 'YOUR_API_KEY';
+```
+
+4. Start the development server
 ```bash
 ng serve
 ```
 
-Navigate to `http://localhost:4200/` to view the application.
-
-## Project Structure
-
+### Building for Production
+```bash
+ng build --configuration production
 ```
-src/
-├── app/
-│   ├── screens/           # Main screen components
-│   │   └── home/         # Home screen with world map
-│   └── shared/           # Shared components and services
-│       └── services/     # Common services (audio, etc.)
-├── assets/
-│   ├── images/          # Image assets
-│   └── audio/          # Audio files
-└── styles/
-    ├── _variables.scss  # Global SCSS variables
-    └── styles.scss      # Global styles
-```
-
-## Implementation Details
-
-### Responsive Design
-- Uses CSS clamp() for fluid typography
-- Viewport-based units for scaling
-- Mobile-first approach
-- Maintains Wii aesthetic across devices
-
-### Animations
-- Map zoom effect with echo
-- Smooth transitions between states
-- CSS keyframe animations
-- Angular animation integration
-
-### Audio Integration
-- Browser-compatible audio playback
-- Server-side rendering support
-- User interaction handling
-
-## Contributing
-
-Feel free to contribute to this project by:
-1. Reporting bugs
-2. Suggesting enhancements
-3. Creating pull requests
-
-## License
-
-This project is for educational purposes only. All Wii-related trademarks belong to Nintendo.
 
 ## Deployment
 
-The project is deployed using GitHub Pages. You can view the live demo at:
-https://[your-username].github.io/wii-news-channel/
+The project is configured for Firebase Hosting deployment:
 
-### Deploying Updates
-
-1. Push changes to the main branch:
+1. Install Firebase CLI
 ```bash
-git push origin main
+npm install -g firebase-tools
 ```
 
-2. GitHub Actions will automatically build and deploy to GitHub Pages.
+2. Login to Firebase
+```bash
+firebase login
+```
 
-Or deploy manually:
+3. Initialize Firebase project
+```bash
+firebase init hosting
+```
+
+4. Deploy
 ```bash
 npm run deploy
 ```
+
+## Technologies Used
+
+- Angular 17
+- TypeScript
+- SCSS
+- Firebase Hosting
+- NewsAPI
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

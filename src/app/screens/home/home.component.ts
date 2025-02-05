@@ -41,4 +41,8 @@ export class HomeComponent implements OnInit {
       this.audioService.playStartupSound();
     }
   }
+  
+  refreshPage() {
+    window.location.reload();
+  }
 }

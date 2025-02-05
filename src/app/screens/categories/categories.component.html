@@ -1,1 +1,36 @@
-<p>categories works!</p>
+<div class="categories-screen">
+  <!-- Header -->
+  <div class="header">
+    <div class="time">{{ getFormattedTime(currentTime) }}</div>
+    <div class="wii-blank-button"></div>
+    <div class="wii-blank-button"></div>
+</div>
+<div class="title-bar" >
+    <div class="update-info">
+      Last Updated {{ getTimeSinceUpdate() }}
+    </div>
+    <div class="channel-name">News Channel</div>
+</div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2 class="section-title">Select a Section</h2>
+    <div class="categories-list">
+      @for (category of categories; track category.id) {
+        <button 
+          class="category-button" 
+          [class.selected]="selectedCategory === category.id"
+          (click)="selectCategory(category.id)"
+        >
+          {{ category.name }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="footer-button" routerLink="/">Wii Menu</button>
+    <div class="wii-blank-button"></div>
+    <div class="wii-blank-button"></div>
+  </div>
+</div>

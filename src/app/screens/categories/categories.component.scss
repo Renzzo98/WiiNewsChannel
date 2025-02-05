@@ -1,0 +1,146 @@
+@import '../../../styles/variables';
+
+$header-border-width: 2px;
+
+.categories-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $categories-background;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  background: linear-gradient(to bottom, $categories-primary, $news-channel-green);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  .time {
+    font-size: clamp(1rem, 3vw, 2rem);
+    padding: 1rem 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    width: -webkit-fill-available;
+    border-bottom: $header-border-width solid black;
+    text-shadow: -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000;
+  }
+
+  .wii-blank-button {
+    background: none;
+    width: 100%;
+    height: 100%;   
+    border-left: $header-border-width solid black;
+    border-bottom: $header-border-width solid black;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    cursor: pointer;
+    padding: 5px 15px;
+  }
+}
+
+.title-bar {
+    background-color: $news-channel-banner;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    border-bottom: 2px solid #ccc;
+    
+    .update-info {
+      font-size: clamp(1rem, 5vw, 3rem);
+      font-weight: 600;
+      color: black;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      border-top: 2px solid $categories-primary;
+    }
+    .channel-name {
+      font-size: clamp(0.8rem, 2vw, 1.5rem);
+      background-color: $categories-primary;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+    }
+}
+
+.main-content {
+  flex: 1;
+  background: #ccc4bb;
+
+  .section-title {
+    color: #fff;
+    font-size: 24px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, $categories-primary, $categories-background);
+  }
+
+  .categories-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem clamp(4rem, 15vw, 30rem) 1.5rem clamp(4rem, 15vw, 30rem);
+    gap: 5px;
+  }
+}
+
+.category-button {
+  background-color: $categories-background-secondary;
+  border: none;
+  padding: 15px;
+  text-align: left;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $wii-button-border;
+  }
+
+  &.selected {
+    background-color: $wii-button-border;
+    color: #fff;
+  }
+}
+
+.footer {
+  background: linear-gradient(to top, $categories-primary, $news-channel-green);
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  .footer-button {
+    background: none;
+    width: -webkit-fill-available;
+    padding: 1rem 1.4rem;
+    border-top: $header-border-width solid black;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    cursor: pointer;    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .wii-blank-button {
+    background: none;
+    width: 100%;
+    height: 100%;   
+    border-left: $header-border-width solid black;
+    border-top: $header-border-width solid black;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    cursor: pointer;
+    padding: 5px 15px;
+  }
+}
