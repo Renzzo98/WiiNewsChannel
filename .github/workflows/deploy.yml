@@ -25,8 +25,11 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           
       - name: Deploy
-        run: npm run deploy
+        run: |
+          touch docs/browser/browser/.nojekyll
+          npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
