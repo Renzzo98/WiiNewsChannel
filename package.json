@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:wii-news-channel": "node dist/wii-news-channel/server/server.mjs",
-    "deploy": "ng build --configuration production --base-href=/wii-news-channel/ && touch docs/browser/.nojekyll && gh-pages -d docs/browser"
+    "deploy": "ng build --configuration production --base-href=/wii-news-channel/ && gh-pages -d docs/browser/browser"
   },
   "private": true,
   "dependencies": {
