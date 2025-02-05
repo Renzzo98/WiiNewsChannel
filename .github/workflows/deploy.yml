@@ -12,6 +12,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -30,6 +32,7 @@ jobs:
           rm -rf docs/browser
           touch docs/.nojekyll
           cp docs/index.html docs/404.html
+          echo "Build date: $(date)" > docs/build.txt
           
       - name: Debug directory content
         run: ls -la docs
@@ -40,6 +43,8 @@ jobs:
           folder: docs
           branch: gh-pages
           clean: true
+          clean-exclude: |
+            .nojekyll
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Deploy to GitHub Pages [skip ci]"
           force: true 
