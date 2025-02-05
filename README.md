@@ -86,3 +86,22 @@ Feel free to contribute to this project by:
 ## License
 
 This project is for educational purposes only. All Wii-related trademarks belong to Nintendo.
+
+## Deployment
+
+The project is deployed using GitHub Pages. You can view the live demo at:
+https://[your-username].github.io/wii-news-channel/
+
+### Deploying Updates
+
+1. Push changes to the main branch:
+```bash
+git push origin main
+```
+
+2. GitHub Actions will automatically build and deploy to GitHub Pages.
+
+Or deploy manually:
+```bash
+npm run deploy
+```
