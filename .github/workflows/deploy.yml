@@ -30,11 +30,16 @@ jobs:
           rm -rf docs/browser
           touch docs/.nojekyll
           cp docs/index.html docs/404.html
+          
+      - name: Debug directory content
+        run: ls -la docs
         
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           folder: docs
           branch: gh-pages
           clean: true
-          token: ${{ secrets.GITHUB_TOKEN }} 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Deploy to GitHub Pages [skip ci]"
+          force: true 
