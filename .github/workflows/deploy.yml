@@ -22,6 +22,7 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
+          npm install -g gh-pages
         
       - name: Configure Git
         run: |
@@ -36,6 +37,6 @@ jobs:
         run: touch docs/browser/browser/.nojekyll
           
       - name: Deploy
-        run: gh-pages --dotfiles -d docs/browser/browser -r https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        run: npx gh-pages --dotfiles -d docs/browser/browser -r https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
