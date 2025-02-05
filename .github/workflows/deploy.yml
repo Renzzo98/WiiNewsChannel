@@ -24,6 +24,9 @@ jobs:
         
       - name: Build
         run: ng build --configuration production
+        
+      - name: List build output
+        run: ls -R docs/browser/browser
           
       - name: Deploy to Firebase
         run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}"

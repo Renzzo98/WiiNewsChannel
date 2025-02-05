@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "docs/browser/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -10,6 +10,26 @@
       {
         "source": "**",
         "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|mjs)",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/javascript"
+          }
+        ]
+      },
+      {
+        "source": "**/*.css",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/css"
+          }
+        ]
       }
     ]
   }

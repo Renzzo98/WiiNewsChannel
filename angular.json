@@ -36,11 +36,16 @@
               "src/styles/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/wii-news-channel/",
-            "ssr": false
+            "baseHref": "/",
+            "ssr": false,
+            "aot": true,
+            "outputHashing": "all"
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -52,8 +57,7 @@
                   "maximumWarning": "4kB",
                   "maximumError": "8kB"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
               "optimization": false,
