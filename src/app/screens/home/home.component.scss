@@ -2,11 +2,22 @@
 
 .wii-container {
   background-color: $news-channel-background;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   padding: $spacing-xs;
   font-family: Arial, sans-serif;
+}
+
+.main-content {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: opacity 0.5s ease-in-out;
+    
+    &.visible {
+      opacity: 1;
+    }
 }
 
 .header {
@@ -50,12 +61,14 @@
   margin: 20px 0;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
   
   .map-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
+    transform-origin: center center;
   }
 }
 
@@ -65,4 +78,100 @@
   padding-top: $spacing-lg;
   padding-bottom: $spacing-xl;
   border-top: 3px solid $news-channel-border;
+}
+
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $news-channel-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.splash-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 35rem;
+  
+  .news-channel-tv-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: clamp(1rem, 3vw, 2rem);
+    border: clamp(3px, 0.5vw, 5px) solid $news-channel-border;
+    background: linear-gradient(90deg, 
+      $wii-primary 0%,
+      darken($wii-primary, 10%) 100%
+    );
+    position: relative;
+    box-shadow: 0 0 50px rgba(255,255,255,0.2);
+    overflow: hidden;
+
+    p {
+      color: #ffffff;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+      margin-top: clamp(1rem, 3vw, 2rem);
+      text-shadow: 
+        2px 2px 0 rgba(0,0,0,0.2),
+        -2px -2px 0 rgba(255,255,255,0.1);
+      z-index: 1;
+    }
+
+    .map-image-icon {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+      filter: 
+        brightness(-10)
+        drop-shadow(0 0 1px rgba(52, 96, 62, 0.8))
+        drop-shadow(0 0 2px rgba(52, 96, 62, 0.5))
+        drop-shadow(0 0 3px rgba(52, 96, 62, 0.3));
+      position: absolute;
+      top: clamp(30px, 10vh, 50px);
+    }
+  }
+
+  .click-to-start {
+    color: $news-channel-green;
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-weight: bold;
+    margin-top: clamp(1rem, 3vw, 2rem);
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .splash-content .news-channel-tv-icon {
+    aspect-ratio: 4/3;
+    
+    p {
+      margin-top: 0.8rem;
+    }
+    
+    .map-image-icon {
+      top: 25px;
+    }
+  }
 }

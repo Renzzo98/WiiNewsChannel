@@ -16,19 +16,49 @@ body {
 
 // Common button styles
 .wii-button {
-  background-color: $wii-button-background;
+  background: linear-gradient(180deg, 
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,1) 45%,
+    rgba(240,240,240,1) 50%,
+    rgba(230,230,230,1) 100%
+  );
   border: 5px solid $wii-button-border;
   border-radius: $border-radius-xl;
   padding: map-get($button-size-vertical-padding, base) map-get($button-size-horizontal-padding, base);
   cursor: pointer;
   font-size: map-get($button-size, base);
+  color: #2c2c2c;
+  filter: drop-shadow(5px 5px 10px #44444d81);
+  box-shadow: 
+    inset 0 10px 0 rgba(255,255,255,1),
+    inset -4px -4px 8px rgba(0,0,0,0.05),
+    inset 4px 4px 8px rgba(255,255,255,0.8),
+    0 1px 3px rgba(0,0,0,0.1);
   @include responsive-button-size;
   @include responsive-button-horizontal-padding;
   @include responsive-button-vertical-padding;
   transition: all $transition-speed $transition-ease;
 
   &:hover {
-    background-color: darken($wii-button-background, 5%);
+    background: linear-gradient(180deg, 
+      rgba(255,255,255,1) 0%,
+      rgba(250,250,250,1) 45%,
+      rgba(235,235,235,1) 50%,
+      rgba(220,220,220,1) 100%
+    );
+  }
+
+  &:active {
+    background: linear-gradient(180deg, 
+      rgba(230,230,230,1) 0%,
+      rgba(240,240,240,1) 50%,
+      rgba(245,245,245,1) 100%
+    );
+    box-shadow: 
+      inset -2px -2px 4px rgba(255,255,255,0.5),
+      inset 2px 2px 4px rgba(0,0,0,0.1),
+      0 1px 2px rgba(0,0,0,0.05);
+    transform: translateY(1px);
   }
 }
 

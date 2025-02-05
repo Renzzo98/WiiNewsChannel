@@ -1,17 +1,40 @@
 <div class="wii-container">
-    <header class="header">
-        <div class="title">
-        <h1>News Channel</h1>
-        <span class="subtitle">WiiConnect24</span>
+    <!-- Splash overlay -->
+    <div class="splash-overlay" *ngIf="!hasInteracted" (click)="startExperience()">
+        <div class="splash-content">
+            <div class="news-channel-tv-icon">
+                <p>News Channel</p>
+                <img 
+                    src="assets/images/world-map.png" 
+                    alt="World Map Icon" 
+                    class="map-image-icon"
+                >
+            </div>
+            <p class="click-to-start">Click to start</p>
         </div>
-    </header>
-
-    <div class="world-map">
-        <img src="assets/images/world-map.png" alt="World Map" class="map-image">
     </div>
 
-    <footer class="footer">
-        <button class="wii-button" routerLink="/menu">Wii Menu</button>
-        <button class="wii-button" routerLink="/categories">Start</button>
-    </footer>
+    <!-- Main content (will be shown after interaction) -->
+    <div class="main-content" [class.visible]="hasInteracted">
+        <header class="header">
+            <div class="title">
+                <h1>News Channel</h1>
+                <span class="subtitle">WiiConnect24</span>
+            </div>
+        </header>
+
+        <div class="world-map">
+            <img 
+                src="assets/images/world-map.png" 
+                alt="World Map" 
+                class="map-image"
+                [@mapState]
+            >
+        </div>
+
+        <footer class="footer">
+            <button class="wii-button" routerLink="/menu"><span>Wii Menu</span></button>
+            <button class="wii-button" routerLink="/categories"><span>Start</span></button>
+        </footer>
+    </div>
 </div>
