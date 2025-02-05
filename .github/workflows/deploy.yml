@@ -22,21 +22,17 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          npm install -g gh-pages
         
-      - name: Configure Git
-        run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          
       - name: Build
         run: ng build --configuration production --base-href=/wii-news-channel/
           
       - name: Add .nojekyll
         run: touch docs/browser/browser/.nojekyll
           
-      - name: Deploy
-        run: npx gh-pages --dotfiles -d docs/browser/browser -r https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/browser/browser
+          force_orphan: true
+          enable_jekyll: false
