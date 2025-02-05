@@ -24,12 +24,12 @@ jobs:
       - name: Build
         run: npm run build -- --configuration production --base-href=/wii-news-channel/
         
-      - name: List directories
+      - name: List all directories
         run: |
-          echo "Contents of docs:"
-          ls -la docs
-          echo "Contents of dist:"
-          ls -la dist
+          echo "Current directory:"
+          pwd
+          echo "All contents:"
+          ls -R
           
       - name: Add .nojekyll file
         run: |
