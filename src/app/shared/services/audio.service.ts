@@ -25,14 +25,24 @@ export class AudioService {
   
   playSelectSound() {
     if (this.audio && isPlatformBrowser(this.platformId)) {
-      this.audio.src = 'assets/audio/select.mp3';
+      this.audio.src = 'assets/audio/select-sound.mp3';
       this.audio.load();
       this.audio.play().catch(error => {
         console.warn('Audio playback failed:', error);
       });
     }
   }
-  
+
+  playLobbyMusic() {
+    if (this.audio && isPlatformBrowser(this.platformId)) {
+      this.audio.src = 'assets/audio/main-theme.mp3';
+      this.audio.loop = true; // Enable looping
+      this.audio.load();
+      this.audio.play().catch(error => {
+        console.warn('Audio playback failed:', error);
+      });
+    }
+  }
   stopSound() {
     if (this.audio && isPlatformBrowser(this.platformId)) {
       this.audio.pause();

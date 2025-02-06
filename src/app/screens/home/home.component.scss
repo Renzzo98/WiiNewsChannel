@@ -2,16 +2,15 @@
 
 .wii-container {
   background-color: $news-channel-background;
-  display: flex;
-  flex-direction: column;
   padding: $spacing-xs;
   font-family: Arial, sans-serif;
 }
 
 .main-content {
-    opacity: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    opacity: 0;
     height: 100vh;
     transition: opacity 0.5s ease-in-out;
     
@@ -57,7 +56,6 @@
 }
 
 .world-map {
-  flex: 1;
   margin: 20px 0;
   border-radius: 8px;
   overflow: hidden;

@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { NewsService } from '../../services/news.service';
 import { interval, Subscription } from 'rxjs';
-
+import { NavigationService } from '../../shared/services/navigation.service';
+import { AudioService } from '../../shared/services/audio.service';
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   providers: [NewsService],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
@@ -31,13 +30,18 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   selectedCategory: string | null = null;
   articles: any[] = [];
 
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private navigationService: NavigationService,
+    private audioService: AudioService
+  ) {}
 
   ngOnInit() {
     // Update time every second
     this.timeSubscription = interval(1000).subscribe(() => {
       this.currentTime = new Date();
     });
+    this.audioService.playLobbyMusic();
   }
 
   ngOnDestroy() {
@@ -72,6 +76,10 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     const hours = Math.floor(diff / 60);
     const minutes = diff % 60;
     return `${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ago`;
+  }
+
+  goHome() {
+    this.navigationService.navigateHome();
   }
 
 }

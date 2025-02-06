@@ -28,12 +28,12 @@
                 src="assets/images/world-map.png" 
                 alt="World Map" 
                 class="map-image"
-                [@mapState]
+                [@mapState]="hasInteracted ? 'visible' : 'hidden'"
             >
         </div>
 
         <footer class="footer">
-            <button class="wii-button" (click)="refreshPage()"><span>Wii Menu</span></button>
+            <button class="wii-button" (click)="goHome()"><span>Wii Menu</span></button>
             <button class="wii-button" (click)="goToCategories()"><span>Start</span></button>
         </footer>
     </div>

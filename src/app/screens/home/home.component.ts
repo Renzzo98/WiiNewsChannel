@@ -4,6 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { AudioService } from '../../shared/services/audio.service';
+import { NavigationService } from '../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,14 @@ import { AudioService } from '../../shared/services/audio.service';
         animate('2s ease-out', keyframes([
           style({ transform: 'scale(2.5)', opacity: 0, offset: 0 }),
           style({ transform: 'scale(1)', opacity: 1, offset: 0.5 }),
-          // Single strong echo
+          style({ transform: 'scale(1.2)', opacity: 0.3, offset: 0.7 }),
+          style({ transform: 'scale(1)', opacity: 1, offset: 1 })
+        ]))
+      ]),
+      transition('hidden => visible', [
+        animate('2s ease-out', keyframes([
+          style({ transform: 'scale(2.5)', opacity: 0, offset: 0 }),
+          style({ transform: 'scale(1)', opacity: 1, offset: 0.5 }),
           style({ transform: 'scale(1.2)', opacity: 0.3, offset: 0.7 }),
           style({ transform: 'scale(1)', opacity: 1, offset: 1 })
         ]))
@@ -30,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private audioService: AudioService,
-    private router: Router,
+    private navigationService: NavigationService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -43,12 +51,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  refreshPage() {
-    window.location.reload();
+  goHome() {
+    this.navigationService.navigateHome();
   }
 
-  goToCategories() {
+  async goToCategories() {
     this.audioService.playSelectSound();
-    this.router.navigate(['/categories']);
+    await this.navigationService.navigateWithFade('/categories');
   }
 }
