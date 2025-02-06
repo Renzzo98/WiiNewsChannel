@@ -14,6 +14,8 @@ A modern recreation of the iconic Wii News Channel interface using Angular 17.
 - Interactive world map animation
 - CRT TV-style scanline effects
 - Mock data support for development
+- Article detail view with time-since-published
+- Cross-page state management
 
 ## Development
 
@@ -34,7 +36,7 @@ cd wii-news-channel
 npm install
 ```
 
-3. Development Modes
+### Development Modes
 
 #### Using Mock Data
 The application comes with pre-configured mock data for development. No additional setup required.
@@ -51,26 +53,53 @@ Place the following audio files in `src/assets/audio/`:
 - `select-sound.mp3` - Button click sound
 - `main-theme.mp3` - Background music for categories
 
-### Building for Production
-```bash
-ng build --configuration production
-```
-
-## Project Structure
+### Project Structure
 
 ```
 src/app/
 ├── models/
-│   ├── news.model.ts         # Data interfaces
+│   ├── news.model.ts         # Data interfaces and validators
 │   └── news.transformers.ts  # Data transformation utilities
 ├── services/
 │   ├── news.service.ts       # News data service
 │   ├── mock-news.data.ts     # Mock data for development
 │   ├── news-cache.service.ts # Caching service
+│   ├── navigation.service.ts # Page transition handling
 │   └── audio.service.ts      # Sound management
 └── screens/
     ├── home/                 # Home screen with world map
-    └── categories/           # News categories view
+    ├── categories/           # News categories view
+    ├── article-list/         # Category articles list
+    └── article-details/      # Individual article view
+```
+
+### Building for Production
+```bash
+ng build --configuration production
+```
+
+## Deployment
+
+The project is configured for Firebase Hosting deployment:
+
+1. Install Firebase CLI
+```bash
+npm install -g firebase-tools
+```
+
+2. Login to Firebase
+```bash
+firebase login
+```
+
+3. Initialize Firebase project
+```bash
+firebase init hosting
+```
+
+4. Deploy
+```bash
+npm run deploy
 ```
 
 ## Technologies Used
@@ -81,6 +110,7 @@ src/app/
 - Firebase Hosting
 - NewsAPI (optional)
 - Angular Animations
+- RxJS for state management
 
 ## Contributing
 
