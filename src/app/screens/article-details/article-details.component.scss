@@ -1,0 +1,58 @@
+@import '../../../styles/variables';
+
+$header-border-width: 2px;
+
+.article-list-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $categories-background;
+  font-family: 'Arial', sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  background: #ccc4bb;
+
+  .location-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    height: 30%;
+  }
+
+  .article {
+    display: flex;
+    flex-direction: column;
+
+    .last-updated {
+      display: flex;
+      justify-content: flex-end;
+      color: black;
+      width: 100%;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 200;
+      letter-spacing: 0.1rem;
+      text-transform: capitalize;
+      padding: 0.5rem 1rem 0.5rem clamp(1.5rem, 3vw, 3rem);
+      border-bottom: 2px solid black;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .article-title {
+        color: black;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 200;
+        letter-spacing: 0.1rem;
+        text-transform: capitalize;
+        padding: 0.5rem 1rem 0.5rem clamp(1.5rem, 3vw, 3rem);
+    }
+    
+    .article-description {
+      margin-top: 1rem;
+      padding: clamp(1rem, 15vw, 2rem) 1rem 1.5rem clamp(1.5rem, 4vw, 3rem);
+    }
+  }
+}

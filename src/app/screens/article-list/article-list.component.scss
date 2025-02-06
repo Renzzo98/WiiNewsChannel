@@ -1,0 +1,127 @@
+@import '../../../styles/variables';
+
+$header-border-width: 2px;
+
+.article-list-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $categories-background;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  background: linear-gradient(to bottom, #201c16, #8d9c8d);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  .time {
+    font-size: clamp(1rem, 3vw, 2rem);
+    padding: 1.5rem 0 1rem 2rem;
+    font-weight: bold;
+    color: #fff;
+    width: -webkit-fill-available;
+    border-bottom: $header-border-width solid black;
+    text-shadow: -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000;
+  }
+
+  .wii-blank-button {
+    background: none;
+    width: 100%;
+    height: 100%;   
+    border-left: $header-border-width solid black;
+    border-bottom: $header-border-width solid black;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    cursor: pointer;
+    padding: 5px 15px;
+  }
+}
+.main-content {
+  flex: 1;
+  background: #ccc4bb;
+
+  .section-title {
+    color: black;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 200;
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+    padding: 0.5rem 1rem 0.5rem clamp(1.5rem, 3vw, 3rem);;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-image: linear-gradient(to right, #3e9eac 20%, transparent) 1;
+    border-bottom: 20px solid;
+    background: linear-gradient(to right, #dbd9d3, $categories-background);
+  }
+
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem clamp(1rem, 15vw, 5rem) 1.5rem clamp(1rem, 15vw, 5rem);
+    gap: 0px;
+  }
+}
+
+.article-button {
+  background-color: $categories-background;
+  border-bottom: 2px solid black;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  padding: 30px;
+  text-align: left;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #89aaa7;
+  }
+
+  &.selected {
+    background-color: $wii-button-border;
+    color: #fff;
+  }
+}
+
+.footer {
+  background: linear-gradient(to top, #201c16, #8d9c8d);
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  .footer-button {
+    background: none;
+    width: -webkit-fill-available;
+    padding: 1rem 1.4rem;
+    border-top: $header-border-width solid black;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    color: white;
+    font-size: clamp(1rem, 3vw, 1.8rem);
+    cursor: pointer;    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .wii-blank-button {
+    background: none;
+    width: 100%;
+    height: 100%;   
+    border-left: $header-border-width solid black;
+    border-top: $header-border-width solid black;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    cursor: pointer;
+    padding: 5px 15px;
+  }
+}

@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
   }
 
   async goToCategories() {
-    this.audioService.playSelectSound();
     await this.navigationService.navigateWithFade('/categories');
   }
 }

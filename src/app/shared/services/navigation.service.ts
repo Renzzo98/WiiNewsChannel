@@ -9,10 +9,12 @@ export class NavigationService {
 
   constructor(private router: Router, private audioService: AudioService) {}
 
-  async navigateWithFade(path: string) {
+  async navigateWithFade(path: string, params?: any) {
+    console.log(params);
+    this.audioService.playSelectSound();
     this.isFading = true;
     await new Promise(resolve => setTimeout(resolve, 1000)); // Fade to black
-    await this.router.navigate([path]);
+    await this.router.navigate([path], params);
     await new Promise(resolve => setTimeout(resolve, 100)); // Small delay
     this.isFading = false; // Fade in new page
   }

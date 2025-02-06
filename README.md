@@ -12,13 +12,15 @@ A modern recreation of the iconic Wii News Channel interface using Angular 17.
 - Original Wii sound effects and music
 - Smooth page transitions with fade effects
 - Interactive world map animation
+- CRT TV-style scanline effects
+- Mock data support for development
 
 ## Development
 
 ### Prerequisites
 - Node.js 20+
 - Angular CLI 17+
-- A NewsAPI.org API key
+- A NewsAPI.org API key (optional - mock data available)
 
 ### Setup
 1. Clone the repository
@@ -32,16 +34,16 @@ cd wii-news-channel
 npm install
 ```
 
-3. Add your NewsAPI key
-```typescript
-// src/app/services/news.service.ts
-private apiKey = 'YOUR_API_KEY';
-```
+3. Development Modes
 
-4. Start the development server
-```bash
-ng serve
-```
+#### Using Mock Data
+The application comes with pre-configured mock data for development. No additional setup required.
+
+#### Using Live API
+To use the NewsAPI service:
+1. Get an API key from newsapi.org
+2. Update the key in `src/app/services/news.service.ts`
+3. Uncomment the API implementation in the service
 
 ### Required Assets
 Place the following audio files in `src/assets/audio/`:
@@ -54,28 +56,21 @@ Place the following audio files in `src/assets/audio/`:
 ng build --configuration production
 ```
 
-## Deployment
+## Project Structure
 
-The project is configured for Firebase Hosting deployment:
-
-1. Install Firebase CLI
-```bash
-npm install -g firebase-tools
 ```
-
-2. Login to Firebase
-```bash
-firebase login
-```
-
-3. Initialize Firebase project
-```bash
-firebase init hosting
-```
-
-4. Deploy
-```bash
-npm run deploy
+src/app/
+├── models/
+│   ├── news.model.ts         # Data interfaces
+│   └── news.transformers.ts  # Data transformation utilities
+├── services/
+│   ├── news.service.ts       # News data service
+│   ├── mock-news.data.ts     # Mock data for development
+│   ├── news-cache.service.ts # Caching service
+│   └── audio.service.ts      # Sound management
+└── screens/
+    ├── home/                 # Home screen with world map
+    └── categories/           # News categories view
 ```
 
 ## Technologies Used
@@ -84,7 +79,7 @@ npm run deploy
 - TypeScript
 - SCSS
 - Firebase Hosting
-- NewsAPI
+- NewsAPI (optional)
 - Angular Animations
 
 ## Contributing

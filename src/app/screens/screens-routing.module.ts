@@ -5,6 +5,9 @@ import { CategoriesComponent } from './categories/categories.component';
 import { NewsArticleComponent } from './news-article/news-article.component';
 import { GlobeComponent } from './globe/globe.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
+
 
 const routes: Routes = [
   {
@@ -16,8 +19,12 @@ const routes: Routes = [
     component: CategoriesComponent
   },
   {
+    path: 'categories/:category',
+    component: ArticleListComponent
+  },
+  {
     path: 'article/:id',
-    component: NewsArticleComponent
+    component: ArticleDetailsComponent
   },
   {
     path: 'globe',

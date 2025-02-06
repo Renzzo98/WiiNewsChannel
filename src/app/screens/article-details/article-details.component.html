@@ -1,0 +1,18 @@
+<div class="article-list-screen" (click)="goBack()">
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="location-image">
+        <img src="" alt="Location Image">
+      </div>
+      <div class="article" *ngIf="article">
+        <div class="last-updated">
+          Last Updated: {{ getTimeSinceUpdate(article!.published_at) }}
+        </div>
+        <div class="article-title">{{ article!.title }}</div>
+        <div class="article-description">{{ article!.description }}</div>
+      </div>
+    </div>
+  
+  </div>
+  

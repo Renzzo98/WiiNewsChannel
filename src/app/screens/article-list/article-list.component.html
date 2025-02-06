@@ -1,0 +1,31 @@
+<div class="article-list-screen">
+    <!-- Header -->
+    <div class="header">
+      <div class="time">{{ getFormattedTime(currentTime) }}</div>
+      <div class="wii-blank-button"></div>
+      <div class="wii-blank-button"></div>
+  </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2 class="section-title">{{selectedCategory}}</h2>
+      <div class="articles-list">
+        @for (article of articles; track article.uuid) {
+          <button 
+            class="article-button" 
+            [class.selected]="selectedArticle === article.uuid"
+            (click)="selectArticle(article)"
+          >
+            {{ article.title }}
+          </button>
+        }
+      </div>
+    </div>
+  
+    <div class="footer">
+      <button class="footer-button" (click)="goBack()">Back</button>
+      <div class="wii-blank-button"></div>
+      <div class="wii-blank-button"></div>
+    </div>
+  </div>
+  
