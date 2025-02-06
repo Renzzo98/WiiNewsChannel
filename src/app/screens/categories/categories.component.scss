@@ -11,14 +11,14 @@ $header-border-width: 2px;
 }
 
 .header {
-  background: linear-gradient(to bottom, $categories-primary, $news-channel-green);
+  background: linear-gradient(to bottom, #201c16, #8d9c8d);
   display: flex;
   justify-content: space-around;
   flex-direction: row;
 
   .time {
     font-size: clamp(1rem, 3vw, 2rem);
-    padding: 1rem 1.4rem;
+    padding: 1.5rem 0 1rem 2rem;
     font-weight: bold;
     color: #fff;
     width: -webkit-fill-available;
@@ -96,6 +96,7 @@ $header-border-width: 2px;
   padding: 15px;
   text-align: left;
   font-size: clamp(1.3rem, 4vw, 2rem);
+  color: black;
   cursor: pointer;
   transition: background-color 0.2s;
 
@@ -110,7 +111,7 @@ $header-border-width: 2px;
 }
 
 .footer {
-  background: linear-gradient(to top, $categories-primary, $news-channel-green);
+  background: linear-gradient(to top, #201c16, #8d9c8d);
   opacity: 0.8;
   display: flex;
   justify-content: space-around;
@@ -125,7 +126,7 @@ $header-border-width: 2px;
     border-right: 0px;
     border-bottom: 0px;
     color: white;
-    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 3vw, 1.8rem);
     cursor: pointer;    
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);

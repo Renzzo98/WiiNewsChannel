@@ -107,10 +107,10 @@
     width: 100%;
     aspect-ratio: 16/9;
     border-radius: clamp(1rem, 3vw, 2rem);
-    border: clamp(3px, 0.5vw, 5px) solid $news-channel-border;
+    border: clamp(3px, 0.5vw, 5px) solid #c0c0c0;
     background: linear-gradient(90deg, 
-      $wii-primary 0%,
-      darken($wii-primary, 10%) 100%
+      #30932f 0%,
+      #295d10 100%
     );
     position: relative;
     box-shadow: 0 0 50px rgba(255,255,255,0.2);
@@ -132,14 +132,24 @@
       width: 100%;
       height: auto;
       margin-bottom: 1rem;
-      opacity: 0.3;
-      filter: 
-        brightness(-10)
-        drop-shadow(0 0 1px rgba(52, 96, 62, 0.8))
-        drop-shadow(0 0 2px rgba(52, 96, 62, 0.5))
-        drop-shadow(0 0 3px rgba(52, 96, 62, 0.3));
+      scale: 1.08;
+      left: clamp(3px, 3vh, 5px);
+      opacity: 0.1;
+      mix-blend-mode: plus-lighter;
       position: absolute;
-      top: clamp(30px, 10vh, 50px);
+      filter: drop-shadow(0 0 20px rgb(0, 255, 60)), blur(10px);
+      top: clamp(20px, 8vh, 40px);
+    }
+
+    .map-image-icon-overlay {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+      mix-blend-mode: difference;
+      position: absolute;
+      top: clamp(20px, 8vh, 40px);
+      z-index: 1;
     }
   }
 
@@ -151,25 +161,55 @@
   }
 }
 
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 15;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 0.5%,
+      transparent 1%
+    );
+    animation: scanlines 10s linear infinite;
+  }
+}
+
 @keyframes scanlines {
   0% {
-    background-position: 0 0;
+    transform: translateY(0);
   }
   100% {
-    background-position: 0 100%;
+    transform: translateY(100%);
   }
 }
 
 @media (max-width: $breakpoint-sm) {
   .splash-content .news-channel-tv-icon {
-    aspect-ratio: 4/3;
     
     p {
       margin-top: 0.8rem;
     }
     
     .map-image-icon {
-      top: 25px;
+      top: 20px;
+    }
+    
+    .map-image-icon-overlay {
+      top: 20px;
     }
   }
 }

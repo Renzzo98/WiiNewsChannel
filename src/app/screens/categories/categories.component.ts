@@ -54,8 +54,9 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   selectCategory(categoryId: string) {
     this.selectedCategory = categoryId;
     this.newsService.getNewsByCategory(categoryId).subscribe(
-      (response) => {
-        this.articles = response.articles;
+      (articles) => {
+        console.log(articles);
+        this.articles = articles;
       },
       (error) => {
         console.error('Error fetching news:', error);

@@ -9,6 +9,9 @@ A modern recreation of the iconic Wii News Channel interface using Angular 17.
 - Category-based news browsing
 - Responsive design that maintains the Wii aesthetic
 - Time and last updated indicators
+- Original Wii sound effects and music
+- Smooth page transitions with fade effects
+- Interactive world map animation
 
 ## Development
 
@@ -39,6 +42,12 @@ private apiKey = 'YOUR_API_KEY';
 ```bash
 ng serve
 ```
+
+### Required Assets
+Place the following audio files in `src/assets/audio/`:
+- `startup.mp3` - Initial startup sound
+- `select-sound.mp3` - Button click sound
+- `main-theme.mp3` - Background music for categories
 
 ### Building for Production
 ```bash
@@ -76,6 +85,7 @@ npm run deploy
 - SCSS
 - Firebase Hosting
 - NewsAPI
+- Angular Animations
 
 ## Contributing
 

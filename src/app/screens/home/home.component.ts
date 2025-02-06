@@ -1,15 +1,14 @@
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { NgIf } from '@angular/common';
-import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
+import { trigger, style, animate, transition, keyframes } from '@angular/animations';
 import { AudioService } from '../../shared/services/audio.service';
 import { NavigationService } from '../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, NgIf],
+  imports: [NgIf],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
