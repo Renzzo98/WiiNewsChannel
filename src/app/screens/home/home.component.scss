@@ -190,11 +190,12 @@
 }
 
 .wii-menu-arrow {
-  font-size: 3rem;
-  color: $news-channel-green;
+  font-size: 3.5rem;
+  color: #7abadb;
   font-weight: bold;
-  opacity: 0.7;
+  opacity: 0.9;
   animation: pulse 1.5s ease-in-out infinite;
+  text-shadow: 0 2px 4px rgba(122, 186, 219, 0.3);
 }
 
 @keyframes pulse {
@@ -213,13 +214,13 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
-  background-color: $news-channel-background;
-  border-top: 3px solid $news-channel-border;
+  height: 120px;
+  background: linear-gradient(to bottom, #5a6a7a 0%, #4a5a6a 100%);
+  border-top: 2px solid #7a8a9a;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
+  align-items: flex-end;
+  padding: 1rem 2rem 1.5rem 2rem;
   z-index: 999;
 }
 
@@ -227,44 +228,69 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
 
   .logo-text {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #ffffff;
-    background: linear-gradient(90deg, #4a5f7f 0%, #546b8f 100%);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    background: linear-gradient(135deg, #4a5f7f 0%, #546b8f 100%);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
     font-style: italic;
     letter-spacing: 0.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 }
 
-.wii-clock {
+.wii-bar-curve {
+  flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 0.3rem;
+  position: relative;
+  height: 100px;
+  margin: 0 1rem;
 
-  .time {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: $news-channel-green;
-    font-family: monospace;
-    letter-spacing: 0.05rem;
+  .curve-svg {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 80px;
   }
 
-  .date {
-    font-size: 0.9rem;
-    color: $news-channel-green;
-    font-family: Arial, sans-serif;
+  .time-date-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    position: relative;
+    z-index: 2;
+
+    .time {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1a3a1a;
+      font-family: monospace;
+      letter-spacing: 0.05rem;
+    }
+
+    .date {
+      font-size: 0.85rem;
+      color: #2a4a2a;
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+    }
   }
 }
 
 .wii-envelope {
-  font-size: 2rem;
-  color: #a0a09d;
-  opacity: 0.6;
+  font-size: 2.2rem;
+  color: #b8b8b0;
+  opacity: 0.7;
+  flex-shrink: 0;
 }
 
 .scanlines {
