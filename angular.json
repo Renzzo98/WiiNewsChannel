@@ -36,7 +36,7 @@
               "src/styles/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/",
+            "baseHref": "/WiiNewsChannel/",
             "ssr": false,
             "aot": true,
             "outputHashing": "all"
