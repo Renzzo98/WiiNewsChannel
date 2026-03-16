@@ -1,22 +1,73 @@
 <div class="wii-container">
-    <!-- Splash overlay -->
-    <div class="splash-overlay" *ngIf="!hasInteracted" (click)="startExperience()">
+    <!-- Splash overlay: Wii Menu -->
+    <div class="splash-overlay" *ngIf="!hasInteracted">
         <div class="scanlines"></div>
-        <div class="splash-content">
-            <div class="news-channel-tv-icon">
-                <p>News Channel</p>
-                <img 
-                    src="assets/images/world-map.png" 
-                    alt="World Map Icon" 
-                    class="map-image-icon"
-                >
-                <img 
-                    src="assets/images/world-map.png" 
-                    alt="World Map Icon" 
-                    class="map-image-icon-overlay"
-                >
+        <div class="wii-menu-screen">
+            <!-- Main menu grid -->
+            <div class="wii-menu-grid">
+                <div class="wii-channels-grid">
+                    <!-- Row 1, Col 1 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 1, Col 2 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 1, Col 3 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 1, Col 4 -->
+                    <div class="channel-tile inactive"></div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 2, Col 2: News Channel (ACTIVE) -->
+                    <div class="channel-tile news-channel active"
+                         (click)="startExperience()"
+                         (mouseenter)="playSelectSound()">
+                        <p>News Channel</p>
+                        <img
+                            src="assets/images/world-map.png"
+                            alt="World Map Icon"
+                            class="map-image-icon"
+                        >
+                        <img
+                            src="assets/images/world-map.png"
+                            alt="World Map Icon"
+                            class="map-image-icon-overlay"
+                        >
+                    </div>
+                    <!-- Row 2, Col 3 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 2, Col 4 -->
+                    <div class="channel-tile inactive"></div>
+
+                    <!-- Row 3, Col 1 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 3, Col 2 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 3, Col 3 -->
+                    <div class="channel-tile inactive"></div>
+                    <!-- Row 3, Col 4 -->
+                    <div class="channel-tile inactive"></div>
+                </div>
+
+                <!-- Navigation arrow on right -->
+                <div class="wii-menu-arrow">→</div>
             </div>
-            <p class="click-to-start">Click to start</p>
+
+            <!-- Bottom bar -->
+            <div class="wii-bottom-bar">
+                <!-- Wii logo -->
+                <div class="wii-logo">
+                    <span class="logo-text">Wii</span>
+                </div>
+
+                <!-- Time and date -->
+                <div class="wii-clock">
+                    <div class="time">{{ currentTime | date: 'HH:mm' }}</div>
+                    <div class="date">{{ currentTime | date: 'EEE MMM d' }}</div>
+                </div>
+
+                <!-- Envelope icon -->
+                <div class="wii-envelope">✉</div>
+            </div>
         </div>
     </div>
 

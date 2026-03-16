@@ -1,5 +1,5 @@
-import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { trigger, style, animate, transition, keyframes } from '@angular/animations';
 import { AudioService } from '../../shared/services/audio.service';
@@ -8,7 +8,7 @@ import { NavigationService } from '../../shared/services/navigation.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf],
+  imports: [CommonModule, NgIf],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
@@ -32,8 +32,10 @@ import { NavigationService } from '../../shared/services/navigation.service';
     ])
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   hasInteracted = false;
+  currentTime = new Date();
+  private timeInterval: any;
 
   constructor(
     private audioService: AudioService,
@@ -41,7 +43,19 @@ export class HomeComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.timeInterval = setInterval(() => {
+        this.currentTime = new Date();
+      }, 1000);
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.timeInterval) {
+      clearInterval(this.timeInterval);
+    }
+  }
 
   startExperience() {
     if (isPlatformBrowser(this.platformId)) {
@@ -56,5 +70,9 @@ export class HomeComponent implements OnInit {
 
   async goToCategories() {
     await this.navigationService.navigateWithFade('/categories');
+  }
+
+  playSelectSound() {
+    this.audioService.playSelectSound();
   }
 }

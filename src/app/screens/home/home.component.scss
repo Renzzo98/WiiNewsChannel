@@ -89,76 +89,182 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  cursor: pointer;
+  overflow: hidden;
 }
 
-.splash-content {
-  text-align: center;
+.wii-menu-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
+.wii-menu-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  flex: 1;
+}
+
+.wii-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1000px;
+  aspect-ratio: 4 / 3;
+}
+
+.channel-tile {
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: 3px solid #d0d0cd;
+  background-color: #f0f0ed;
+  position: relative;
+  cursor: default;
+  transition: all 0.2s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  max-width: 35rem;
-  
-  .news-channel-tv-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: clamp(1rem, 3vw, 2rem);
-    border: clamp(3px, 0.5vw, 5px) solid #c0c0c0;
-    background: linear-gradient(90deg, 
-      #30932f 0%,
-      #295d10 100%
-    );
-    position: relative;
-    box-shadow: 0 0 50px rgba(255,255,255,0.2);
-    overflow: hidden;
+  justify-content: center;
+  overflow: hidden;
+
+  &.inactive {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &.active {
+    cursor: pointer;
+    background: linear-gradient(90deg, #30932f 0%, #295d10 100%);
+    border-color: #1a4d19;
+    box-shadow: 0 0 20px rgba(48, 147, 47, 0.3);
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(48, 147, 47, 0.5);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
 
     p {
       color: #ffffff;
-      font-size: clamp(1.5rem, 5vw, 3rem);
+      font-size: 1.2rem;
       font-weight: bold;
-      letter-spacing: 0.1rem;
-      margin-top: clamp(1rem, 3vw, 2rem);
-      text-shadow: 
-        2px 2px 0 rgba(0,0,0,0.2),
-        -2px -2px 0 rgba(255,255,255,0.1);
-      z-index: 1;
+      letter-spacing: 0.05rem;
+      margin: 0;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      text-align: center;
     }
 
     .map-image-icon {
       width: 100%;
       height: auto;
-      margin-bottom: 1rem;
-      scale: 1.08;
-      left: clamp(3px, 3vh, 5px);
       opacity: 0.1;
       mix-blend-mode: plus-lighter;
       position: absolute;
-      filter: drop-shadow(0 0 20px rgb(0, 255, 60)), blur(10px);
-      top: clamp(20px, 8vh, 40px);
+      filter: drop-shadow(0 0 20px rgb(0, 255, 60)) blur(8px);
+      top: 10%;
     }
 
     .map-image-icon-overlay {
       width: 100%;
       height: auto;
-      margin-bottom: 1rem;
-      opacity: 0.4;
+      opacity: 0.35;
       mix-blend-mode: difference;
       position: absolute;
-      top: clamp(20px, 8vh, 40px);
+      top: 10%;
       z-index: 1;
     }
   }
+}
 
-  .click-to-start {
-    color: $news-channel-green;
-    font-size: clamp(1rem, 3vw, 2rem);
-    font-weight: bold;
-    margin-top: clamp(1rem, 3vw, 2rem);
+.wii-menu-arrow {
+  font-size: 3rem;
+  color: $news-channel-green;
+  font-weight: bold;
+  opacity: 0.7;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateX(0);
   }
+  50% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+}
+
+.wii-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: $news-channel-background;
+  border-top: 3px solid $news-channel-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 999;
+}
+
+.wii-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(90deg, #4a5f7f 0%, #546b8f 100%);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-style: italic;
+    letter-spacing: 0.1rem;
+  }
+}
+
+.wii-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+
+  .time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $news-channel-green;
+    font-family: monospace;
+    letter-spacing: 0.05rem;
+  }
+
+  .date {
+    font-size: 0.9rem;
+    color: $news-channel-green;
+    font-family: Arial, sans-serif;
+  }
+}
+
+.wii-envelope {
+  font-size: 2rem;
+  color: #a0a09d;
+  opacity: 0.6;
 }
 
 .scanlines {
