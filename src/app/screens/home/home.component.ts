@@ -1,14 +1,15 @@
-import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { trigger, style, animate, transition, keyframes } from '@angular/animations';
 import { AudioService } from '../../shared/services/audio.service';
 import { NavigationService } from '../../shared/services/navigation.service';
+import { WiiBottomBarComponent } from '../../shared/components/wii-bottom-bar/wii-bottom-bar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgIf],
+  imports: [CommonModule, NgIf, WiiBottomBarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
@@ -32,10 +33,9 @@ import { NavigationService } from '../../shared/services/navigation.service';
     ])
   ]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   hasInteracted = false;
-  currentTime = new Date();
-  private timeInterval: any;
+  isZooming = false;
 
   constructor(
     private audioService: AudioService,
@@ -43,24 +43,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.timeInterval = setInterval(() => {
-        this.currentTime = new Date();
-      }, 1000);
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.timeInterval) {
-      clearInterval(this.timeInterval);
-    }
-  }
+  ngOnInit() {}
 
   startExperience() {
     if (isPlatformBrowser(this.platformId)) {
-      this.hasInteracted = true;
+      this.isZooming = true;
       this.audioService.playStartupSound();
+      setTimeout(() => {
+        this.hasInteracted = true;
+      }, 1200);
     }
   }
 

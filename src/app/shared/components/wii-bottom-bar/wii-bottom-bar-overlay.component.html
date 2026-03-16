@@ -1,0 +1,21 @@
+<!-- Overlay: curve line + time/date centered -->
+<div class="wii-bottom-bar-overlay">
+  <!-- SVG curve: subtle arch that barely rises above the bar border -->
+  <svg class="curve-shape" viewBox="0 0 1000 200" preserveAspectRatio="none">
+    <!-- Fill above curve with grid background color -->
+    <path d="M 0 20 L 175 20 Q 195 20 240 80 Q 250 105 280 105 L 720 105 Q 750 105 760 80 Q 805 20 825 20 L 1000 20 L 1000 0 L 0 0 Z" fill="#e4e4e1" />
+    <!-- Blue curve stroke -->
+    <path d="M 0 20 L 175 20 Q 195 20 240 80 Q 250 105 280 105 L 720 105 Q 750 105 760 80 Q 805 20 825 20 L 1000 20"
+          stroke="#5aacdb" stroke-width="5" fill="none" stroke-linejoin="round" />
+  </svg>
+
+  <!-- Time + date sitting just below the curve peak -->
+  <div class="time-date-display">
+    <div class="time-row">
+      <span class="time" *ngIf="!isMobile">{{ currentTime | date: 'hh:mm' }}</span>
+      <span class="time" *ngIf="isMobile">{{ currentTime | date: 'HH:mm' }}</span>
+      <span class="ampm" *ngIf="!isMobile">{{ currentTime | date: 'a' }}</span>
+    </div>
+    <div class="date">{{ currentTime | date: 'EEE M/d' }}</div>
+  </div>
+</div>

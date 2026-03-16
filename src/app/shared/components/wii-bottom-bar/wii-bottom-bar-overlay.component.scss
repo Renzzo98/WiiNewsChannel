@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'AlarmClock';
+  src: url('/assets/fonts/Technology.ttf') format('truetype');
+}
+
+.wii-bottom-bar-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 200px;
+  z-index: 999;
+  pointer-events: none;
+  background: transparent;
+}
+
+.curve-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.time-date-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+
+  .time-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .time {
+    font-size: 5.5rem;
+    font-weight: 400;
+    color: #606060;
+    font-family: 'AlarmClock', monospace;
+    letter-spacing: 1rem;
+    line-height: 1;
+  }
+
+  .ampm {
+    font-size: 1.8rem;
+    color: #808080;
+    font-weight: 600;
+    position: absolute;
+    left: 16rem;
+    bottom: 0.3rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .date {
+    font-size: 1.6rem;
+    color: #606060;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    margin-top: 0.8rem;
+    padding-top: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .time-date-display .ampm {
+    display: none;
+  }
+}

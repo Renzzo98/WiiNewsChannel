@@ -1,0 +1,22 @@
+<!-- Bottom bar base layer -->
+<div class="wii-bottom-bar">
+  <!-- Wii logo button -->
+  <div class="wii-logo-button">
+    <div class="logo-circle">
+      <span>Wii</span>
+    </div>
+  </div>
+
+  <!-- Spacer for center area (time/date rendered by overlay) -->
+  <div class="center-spacer"></div>
+
+  <!-- Envelope button -->
+  <div class="envelope-button">
+    <div class="envelope-circle">
+      ✉
+    </div>
+  </div>
+</div>
+
+<!-- Overlay with curve and time -->
+<app-wii-bottom-bar-overlay [currentTime]="currentTime"></app-wii-bottom-bar-overlay>
